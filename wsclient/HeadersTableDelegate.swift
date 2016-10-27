@@ -11,14 +11,25 @@ import Cocoa
 
 extension ViewController : NSTableViewDelegate {
     
+    @nonobjc static let nameIdentifier = "HeaderName"
+    @nonobjc static let valueIdentifier = "HeaderValue"
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let cell = tableView.make(withIdentifier: "CellLol", owner: nil)
-        let casted = cell as? NSTableCellView
+        var text: String = ""
+        var cellIdentifier: String = ""
         
-        if casted != nil {
-            casted?.textField?.stringValue = headers[row].name
-            return casted
+        if (tableColumn == table.tableColumns[ViewController.nameColumn]) {
+            text = headers[row].name
+            cellIdentifier = ViewController.nameIdentifier
+        } else if (tableColumn == table.tableColumns[ViewController.valueColumn]) {
+            text = headers[row].value
+            cellIdentifier = ViewController.valueIdentifier
+        }
+        
+        if let cell = tableView.make(withIdentifier: cellIdentifier, owner: nil) as? NSTableCellView {
+            cell.textField?.stringValue = text
+            return cell
         }
         
         return nil

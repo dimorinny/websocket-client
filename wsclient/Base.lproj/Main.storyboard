@@ -727,7 +727,7 @@
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
-                                                                        <tableCellView identifier="CellLol" id="Lgh-V0-y9M">
+                                                                        <tableCellView identifier="HeaderName" id="Lgh-V0-y9M">
                                                                             <rect key="frame" x="1" y="1" width="118" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
@@ -738,6 +738,9 @@
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <connections>
+                                                                                        <action selector="onHeaderNameInput:" target="XfG-lQ-9wD" id="PGA-TR-eKj"/>
+                                                                                    </connections>
                                                                                 </textField>
                                                                             </subviews>
                                                                             <constraints>
@@ -764,7 +767,7 @@
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
-                                                                        <tableCellView id="C1v-9y-t4v">
+                                                                        <tableCellView identifier="HeaderValue" id="C1v-9y-t4v">
                                                                             <rect key="frame" x="122" y="1" width="114" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
@@ -775,6 +778,9 @@
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <connections>
+                                                                                        <action selector="onHeaderValueInput:" target="XfG-lQ-9wD" id="COJ-tZ-Ew3"/>
+                                                                                    </connections>
                                                                                 </textField>
                                                                             </subviews>
                                                                             <constraints>

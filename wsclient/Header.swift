@@ -9,7 +9,7 @@
 import Foundation
 
 class Header {
-    let name, value: String
+    var name, value: String
     
     init(name: String, value: String) {
         self.name = name
