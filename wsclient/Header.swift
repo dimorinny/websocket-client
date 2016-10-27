@@ -15,4 +15,9 @@ class Header {
         self.name = name
         self.value = value
     }
+    
+    init() {
+        self.name = ""
+        self.value = ""
+    }
 }

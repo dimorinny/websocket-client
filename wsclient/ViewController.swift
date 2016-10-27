@@ -12,6 +12,11 @@ import Starscream
 
 class ViewController: NSViewController {
     
+    static let plusSegment = 0
+    static let minusSegment = 1
+    
+    static let rowUnselected = -1
+    
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var url: NSTextField!
     @IBOutlet weak var log: NSScrollView!
@@ -31,13 +36,26 @@ class ViewController: NSViewController {
         table.dataSource = self
     }
     
-    @IBAction func lol(_ sender: NSSegmentedCell) {
-        print(sender.selectedSegment)
+    @IBAction func onHeadersAction(_ sender: NSSegmentedCell) {
+        switch sender.selectedSegment {
+            
+        case ViewController.plusSegment:
+            headers.append(Header())
+            table.reloadData()
+            table.editColumn(ViewController.plusSegment, row: headers.count - 1, with: nil, select: true)
+            
+        case ViewController.minusSegment:
+            if (table.selectedRow != ViewController.rowUnselected) {
+                headers.removeAtIndices(set: table.selectedRowIndexes)
+                table.reloadData()
+            }
+            
+        default: ()
+        }
     }
+
     @IBAction func onConnectButton(_ sender: NSButton) {
-        headers.append(Header(name: "Origin", value: "avito.ru"))
-        table.reloadData()
-        table.editColumn(0, row: headers.count - 1, with: nil, select: true)
+        print(headers[0].name)
     }
 
     @IBAction func onConnectTextField(_ sender: NSTextField) {

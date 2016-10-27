@@ -707,7 +707,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="238" height="471"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Mwy-aq-ZbA" viewBased="YES" id="dwe-yj-dgT">
+                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Mwy-aq-ZbA" viewBased="YES" id="dwe-yj-dgT">
                                                             <rect key="frame" x="0.0" y="0.0" width="238" height="448"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -819,7 +819,7 @@
                                                         </segment>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="lol:" target="XfG-lQ-9wD" id="aoV-Xb-3Uc"/>
+                                                        <action selector="onHeadersAction:" target="XfG-lQ-9wD" id="1jB-Hf-eWE"/>
                                                     </connections>
                                                 </segmentedCell>
                                             </segmentedControl>
