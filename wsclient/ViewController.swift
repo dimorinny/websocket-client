@@ -12,9 +12,13 @@ import Starscream
 
 class ViewController: NSViewController {
     
+    private static let headersStorageKey = "headersStorageKey"
+    
+    // TODO: enum
     static let nameColumn = 0
     static let valueColumn = 1
     
+    // TODO: enum
     static let plusSegment = 0
     static let minusSegment = 1
     
@@ -25,18 +29,28 @@ class ViewController: NSViewController {
     @IBOutlet weak var log: NSScrollView!
     @IBOutlet weak var headersActions: NSSegmentedCell!
     
+    let headersStorage: Storage<Header> = Storage(key: headersStorageKey)
+    
     var headers: [Header] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headers.append(Header(name: "Origin", value: "avito.ru"))
-        headers.append(Header(name: "Origin1", value: "avito.ru"))
-        headers.append(Header(name: "Origin2", value: "avito.ru"))
-        headers.append(Header(name: "Origin3", value: "avito.ru"))
+        // TODO: remove it
+        headers.append(Header(name: "Origin", value: "aviwqeto.ru"))
+        headers.append(Header(name: "Origin1", value: "aviqwto.ru"))
+        headers.append(Header(name: "Origin2", value: "avieqwto.ru"))
+        headers.append(Header(name: "Origin3", value: "avieto.ru"))
+        
+        // TODO: remove it
+        headersStorage.saveData(headers)
         
         table.delegate = self
         table.dataSource = self
+    }
+    
+    private func saveAndReloadHeaders() {
+        
     }
     
     @IBAction func onHeaderNameInput(_ sender: NSTextField) {
@@ -69,7 +83,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func onConnectButton(_ sender: NSButton) {
-        print(headers[0].name)
+        print(headersStorage.loadData())
     }
 
     @IBAction func onConnectTextField(_ sender: NSTextField) {
