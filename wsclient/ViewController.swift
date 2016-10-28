@@ -26,12 +26,14 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var url: NSTextField!
-    @IBOutlet weak var log: NSScrollView!
     @IBOutlet weak var headersActions: NSSegmentedCell!
+    @IBOutlet var log: NSTextView!
     
     let headersStorage: Storage<Header> = Storage(key: headersStorageKey)
     
     var headers: [Header] = []
+    
+    var socket: WebSocket? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,8 @@ class ViewController: NSViewController {
     }
     
     private func saveAndReloadHeaders() {
-        
+        table.reloadData()
+        headersStorage.saveData(headers)
     }
     
     @IBAction func onHeaderNameInput(_ sender: NSTextField) {
@@ -68,14 +71,14 @@ class ViewController: NSViewController {
             
         case ViewController.plusSegment:
             headers.append(Header())
-            table.reloadData()
+            saveAndReloadHeaders()
             table.selectRowIndexes(IndexSet([headers.count - 1]), byExtendingSelection: true)
             table.editColumn(ViewController.nameColumn, row: headers.count - 1, with: nil, select: true)
             
         case ViewController.minusSegment:
             if (table.selectedRow != ViewController.rowUnselected) {
                 headers.removeAtIndices(set: table.selectedRowIndexes)
-                table.reloadData()
+                saveAndReloadHeaders()
             }
             
         default: ()
@@ -83,7 +86,10 @@ class ViewController: NSViewController {
     }
 
     @IBAction func onConnectButton(_ sender: NSButton) {
-        print(headersStorage.loadData())
+        log.clear()
+        socket = WebSocket(url: URL(string: url.stringValue)!)
+        socket?.delegate = self
+        socket?.connect()
     }
 
     @IBAction func onConnectTextField(_ sender: NSTextField) {

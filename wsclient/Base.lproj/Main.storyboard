@@ -839,17 +839,17 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <scrollView identifier="log" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOe-Is-cK4">
+                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOe-Is-cK4">
                                         <rect key="frame" x="248" y="0.0" width="612" height="504"/>
                                         <clipView key="contentView" id="vyX-1p-j0C">
-                                            <rect key="frame" x="1" y="1" width="595" height="502"/>
+                                            <rect key="frame" x="1" y="1" width="610" height="502"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="5dL-F5-iPb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
+                                                <textView identifier="log" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="5dL-F5-iPb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="610" height="502"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="595" height="502"/>
+                                                    <size key="minSize" width="610" height="502"/>
                                                     <size key="maxSize" width="860" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
@@ -861,7 +861,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="pHW-b5-Ldz">
-                                            <rect key="frame" x="596" y="1" width="15" height="502"/>
+                                            <rect key="frame" x="595" y="1" width="16" height="502"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -932,7 +932,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="log" destination="NOe-Is-cK4" id="XgP-Fz-a51"/>
+                        <outlet property="log" destination="5dL-F5-iPb" id="62W-B0-ipB"/>
                         <outlet property="table" destination="dwe-yj-dgT" id="Fen-0r-IqR"/>
                         <outlet property="url" destination="grH-rB-nwZ" id="VSu-c6-4sf"/>
                     </connections>

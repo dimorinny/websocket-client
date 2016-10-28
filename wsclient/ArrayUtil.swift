@@ -9,6 +9,7 @@
 import Foundation
 
 extension Array {
+    
     mutating func removeAtIndices(set: IndexSet) {
         set.sorted(by: >).forEach { remove(at: $0) }
     }
