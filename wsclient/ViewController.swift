@@ -10,17 +10,17 @@
 import Cocoa
 import Starscream
 
-class ViewController: NSViewController {
+enum ActionSegment : Int {
+    case plus, minus
+}
+
+enum TableColumn : Int {
+    case name, value
+}
+
+class ViewController : NSViewController {
     
     private static let headersStorageKey = "headersStorageKey"
-    
-    // TODO: enum
-    static let nameColumn = 0
-    static let valueColumn = 1
-    
-    // TODO: enum
-    static let plusSegment = 0
-    static let minusSegment = 1
     
     static let rowUnselected = -1
     
@@ -30,22 +30,21 @@ class ViewController: NSViewController {
     @IBOutlet var log: NSTextView!
     
     let headersStorage: Storage<Header> = Storage(key: headersStorageKey)
-    
-    var headers: [Header] = []
-    
     var socket: WebSocket? = nil
+    
+    let model: MainScreenModel = MainScreenModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // TODO: remove it
-        headers.append(Header(name: "Origin", value: "aviwqeto.ru"))
-        headers.append(Header(name: "Origin1", value: "aviqwto.ru"))
-        headers.append(Header(name: "Origin2", value: "avieqwto.ru"))
-        headers.append(Header(name: "Origin3", value: "avieto.ru"))
+        model.headers.append(Header(name: "Origin", value: "aviwqeto.ru"))
+        model.headers.append(Header(name: "Origin1", value: "aviqwto.ru"))
+        model.headers.append(Header(name: "Origin2", value: "avieqwto.ru"))
+        model.headers.append(Header(name: "Origin3", value: "avieto.ru"))
         
         // TODO: remove it
-        headersStorage.saveData(headers)
+        headersStorage.saveData(model.headers)
         
         table.delegate = self
         table.dataSource = self
@@ -53,35 +52,45 @@ class ViewController: NSViewController {
     
     private func saveAndReloadHeaders() {
         table.reloadData()
-        headersStorage.saveData(headers)
+        headersStorage.saveData(model.headers)
+    }
+    
+    private func applyConnectButtonState(state: ConnectButtonActionState) {
+        model.connectButtonState = state
+        
+        switch state {
+        case .Connect:break
+        case .Cancel:break
+        case .Disconnect:break
+        }
     }
     
     @IBAction func onHeaderNameInput(_ sender: NSTextField) {
         let selectedRow = table.selectedRow
-        headers[selectedRow].name = sender.stringValue
-        table.editColumn(ViewController.valueColumn, row: selectedRow, with: nil, select: true)
+        model.headers[selectedRow].name = sender.stringValue
+        table.editColumn(TableColumn.value.rawValue, row: selectedRow, with: nil, select: true)
     }
     
     @IBAction func onHeaderValueInput(_ sender: NSTextField) {
-        headers[table.selectedRow].value = sender.stringValue
+        model.headers[table.selectedRow].value = sender.stringValue
     }
     
     @IBAction func onHeadersAction(_ sender: NSSegmentedCell) {
-        switch sender.selectedSegment {
-            
-        case ViewController.plusSegment:
-            headers.append(Header())
+        let segment = ActionSegment.init(rawValue: sender.selectedSegment)!
+        
+        switch segment {
+
+        case .plus:
+            model.headers.append(Header())
             saveAndReloadHeaders()
-            table.selectRowIndexes(IndexSet([headers.count - 1]), byExtendingSelection: true)
-            table.editColumn(ViewController.nameColumn, row: headers.count - 1, with: nil, select: true)
+            table.selectRowIndexes(IndexSet([model.headers.count - 1]), byExtendingSelection: true)
+            table.editColumn(TableColumn.name.rawValue, row: model.headers.count - 1, with: nil, select: true)
             
-        case ViewController.minusSegment:
+        case .minus:
             if (table.selectedRow != ViewController.rowUnselected) {
-                headers.removeAtIndices(set: table.selectedRowIndexes)
+                model.headers.removeAtIndices(set: table.selectedRowIndexes)
                 saveAndReloadHeaders()
             }
-            
-        default: ()
         }
     }
 

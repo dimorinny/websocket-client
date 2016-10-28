@@ -19,11 +19,11 @@ extension ViewController : NSTableViewDelegate {
         var text: String = ""
         var cellIdentifier: String = ""
         
-        if (tableColumn == table.tableColumns[ViewController.nameColumn]) {
-            text = headers[row].name
+        if (tableColumn == table.tableColumns[TableColumn.name.rawValue]) {
+            text = model.headers[row].name
             cellIdentifier = ViewController.nameIdentifier
-        } else if (tableColumn == table.tableColumns[ViewController.valueColumn]) {
-            text = headers[row].value
+        } else if (tableColumn == table.tableColumns[TableColumn.value.rawValue]) {
+            text = model.headers[row].value
             cellIdentifier = ViewController.valueIdentifier
         }
         

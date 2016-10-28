@@ -12,11 +12,11 @@ import Cocoa
 extension ViewController : NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print(headers.count)
-        return headers.count
+        print(model.headers.count)
+        return model.headers.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return headers[row]
+        return model.headers[row]
     }
 }

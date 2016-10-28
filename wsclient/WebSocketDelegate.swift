@@ -12,7 +12,6 @@ import Starscream
     extension ViewController : WebSocketDelegate {
         
         func websocketDidConnect(socket: WebSocket) {
-            
             print("socket connect")
         }
         
