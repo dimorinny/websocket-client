@@ -27,6 +27,7 @@ class ViewController : NSViewController {
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var url: NSTextField!
     @IBOutlet weak var headersActions: NSSegmentedCell!
+    @IBOutlet weak var connectionActionButton: NSButtonCell!
     @IBOutlet var log: NSTextView!
     
     let headersStorage: Storage<Header> = Storage(key: headersStorageKey)
@@ -50,18 +51,32 @@ class ViewController : NSViewController {
         table.dataSource = self
     }
     
-    private func saveAndReloadHeaders() {
+    func saveAndReloadHeaders() {
         table.reloadData()
         headersStorage.saveData(model.headers)
     }
     
-    private func applyConnectButtonState(state: ConnectButtonActionState) {
+    func applyConnectButtonState(state: ConnectButtonActionState) {
         model.connectButtonState = state
-        
-        switch state {
-        case .Connect:break
-        case .Cancel:break
-        case .Disconnect:break
+        connectionActionButton.title = state.rawValue
+    }
+    
+    func connect() {
+        switch model.connectButtonState {
+            
+        case .Connect:
+            if (!url.stringValue.isEmpty) {
+                socket = WebSocket(url: URL(string: url.stringValue)!)
+                socket?.delegate = self
+                socket?.connect()
+            }
+            
+        case .Disconnect:
+            applyConnectButtonState(state: ConnectButtonActionState.Connect)
+            socket?.disconnect()
+            
+        default:
+            ()
         }
     }
     
@@ -95,16 +110,19 @@ class ViewController : NSViewController {
     }
 
     @IBAction func onConnectButton(_ sender: NSButton) {
-        log.clear()
-        socket = WebSocket(url: URL(string: url.stringValue)!)
-        socket?.delegate = self
-        socket?.connect()
+        connect()
     }
 
     @IBAction func onConnectTextField(_ sender: NSTextField) {
+        connect()
     }
     
     @IBAction func onSendData(_ sender: NSTextField) {
+        if (!sender.stringValue.isEmpty &&
+            socket != nil &&
+            (socket?.isConnected)!) {
+            socket?.write(string: sender.stringValue)
+        }
     }
 }
 

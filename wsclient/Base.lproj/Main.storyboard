@@ -932,6 +932,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="connectionActionButton" destination="g7w-a8-GWk" id="cSl-70-UxJ"/>
                         <outlet property="log" destination="5dL-F5-iPb" id="62W-B0-ipB"/>
                         <outlet property="table" destination="dwe-yj-dgT" id="Fen-0r-IqR"/>
                         <outlet property="url" destination="grH-rB-nwZ" id="VSu-c6-4sf"/>

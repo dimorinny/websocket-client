@@ -9,24 +9,25 @@
 import Foundation
 import Starscream
 
-    extension ViewController : WebSocketDelegate {
-        
-        func websocketDidConnect(socket: WebSocket) {
-            print("socket connect")
-        }
-        
-        func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-            print("socket disconnect")
-        }
-        
-        func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-            print("qwe")
-            log.append(string: "\\n")
-            log.append(string: text)
-        }
-        
-        func websocketDidReceiveData(socket: WebSocket, data: Data) {
-            log.append(string: "\n")
-            log.append(data: data)
-        }
+extension ViewController : WebSocketDelegate {
+    
+    func websocketDidConnect(socket: WebSocket) {
+        print("aaaaa")
+        applyConnectButtonState(state: ConnectButtonActionState.Disconnect)
     }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print("socket disconnect")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print("qwe")
+        log.append(string: "\\n")
+        log.append(string: text)
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        log.append(string: "\n")
+        log.append(data: data)
+    }
+}
