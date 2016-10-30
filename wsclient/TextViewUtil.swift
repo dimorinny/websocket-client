@@ -16,10 +16,6 @@ extension NSTextView {
         self.scrollToEndOfDocument(nil)
     }
     
-    func append(data: Data) {
-        append(string: String(data: data as Data, encoding: .utf8)!)
-    }
-    
     func clear() {
         self.textStorage?.mutableString.setString("")
     }

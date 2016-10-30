@@ -15,6 +15,7 @@ enum ConnectButtonActionState : String {
 }
 
 class MainScreenModel {
+    var messages: Messages = Messages()
     var headers: [Header] = []
     var connectButtonState: ConnectButtonActionState = ConnectButtonActionState.Connect
 }

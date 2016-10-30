@@ -12,22 +12,25 @@ import Starscream
 extension ViewController : WebSocketDelegate {
     
     func websocketDidConnect(socket: WebSocket) {
-        print("aaaaa")
+        print("Connected")
+        model.messages.addMessage(message: ConnectedMessage(url: socket.currentURL.absoluteString))
         applyConnectButtonState(state: ConnectButtonActionState.Disconnect)
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print("socket disconnect")
+        model.messages.addMessage(message: DisconnectedMessage(url: socket.currentURL.absoluteString))
+        applyConnectButtonState(state: ConnectButtonActionState.Connect)
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        print("qwe")
-        log.append(string: "\\n")
-        log.append(string: text)
+        print("socket receive")
+        model.messages.addMessage(message: ResponseMessage(message: text))
+
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        log.append(string: "\n")
-        log.append(data: data)
+        print("socket receive")
+        model.messages.addMessage(message: ResponseMessage(message: data.toString()))
     }
 }

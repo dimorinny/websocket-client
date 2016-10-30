@@ -18,7 +18,7 @@ enum TableColumn : Int {
     case name, value
 }
 
-class ViewController : NSViewController {
+class ViewController : NSViewController, MessagesUpdateDelegate {
     
     private static let headersStorageKey = "headersStorageKey"
     
@@ -49,6 +49,7 @@ class ViewController : NSViewController {
         
         table.delegate = self
         table.dataSource = self
+        model.messages.delegate = self
     }
     
     func saveAndReloadHeaders() {
@@ -78,6 +79,11 @@ class ViewController : NSViewController {
         default:
             ()
         }
+    }
+    
+    func messageUpdated(messages: String) {
+        log.clear()
+        log.append(string: messages)
     }
     
     @IBAction func onHeaderNameInput(_ sender: NSTextField) {
@@ -122,6 +128,7 @@ class ViewController : NSViewController {
             socket != nil &&
             (socket?.isConnected)!) {
             socket?.write(string: sender.stringValue)
+            model.messages.addMessage(message: SendMessage(message: sender.stringValue))
         }
     }
 }

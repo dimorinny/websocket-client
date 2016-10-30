@@ -16,6 +16,9 @@
 		1F9140FD1DC27AA600C5F5DE /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9140FC1DC27AA600C5F5DE /* ArrayUtil.swift */; };
 		1F9141001DC2A94000C5F5DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9140FF1DC2A94000C5F5DE /* Storage.swift */; };
 		1FB294121DC25B4F00ECD26C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1FB294111DC25B4F00ECD26C /* .gitignore */; };
+		1FF69C191DC679160036E444 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF69C181DC679160036E444 /* Message.swift */; };
+		1FF69C1B1DC67D420036E444 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF69C1A1DC67D420036E444 /* Messages.swift */; };
+		1FF69C1D1DC68EEF0036E444 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF69C1C1DC68EEF0036E444 /* DataUtil.swift */; };
 		370A9C4A1DA3FD8D00A52684 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A9C491DA3FD8D00A52684 /* AppDelegate.swift */; };
 		370A9C4C1DA3FD8D00A52684 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A9C4B1DA3FD8D00A52684 /* ViewController.swift */; };
 		370A9C4E1DA3FD8D00A52684 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370A9C4D1DA3FD8D00A52684 /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		1F9140FC1DC27AA600C5F5DE /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		1F9140FF1DC2A94000C5F5DE /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1FB294111DC25B4F00ECD26C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1FF69C181DC679160036E444 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1FF69C1A1DC67D420036E444 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		1FF69C1C1DC68EEF0036E444 /* DataUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtil.swift; sourceTree = "<group>"; };
 		28CC8916E042760B7B0F7AFD /* Pods-wsclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wsclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wsclient/Pods-wsclient.debug.xcconfig"; sourceTree = "<group>"; };
 		370A9C461DA3FD8D00A52684 /* wsclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wsclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		370A9C491DA3FD8D00A52684 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4CEFBD1DC20A11005B4E90 /* Header.swift */,
+				1FF69C181DC679160036E444 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -146,6 +153,7 @@
 			children = (
 				1F9140FC1DC27AA600C5F5DE /* ArrayUtil.swift */,
 				1F5ADEF31DC3DD9A00F112C7 /* TextViewUtil.swift */,
+				1FF69C1C1DC68EEF0036E444 /* DataUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 			children = (
 				1F4CEFBC1DC209EC005B4E90 /* Model */,
 				1F9140FF1DC2A94000C5F5DE /* Storage.swift */,
+				1FF69C1A1DC67D420036E444 /* Messages.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -411,11 +420,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				370A9C4C1DA3FD8D00A52684 /* ViewController.swift in Sources */,
+				1FF69C1B1DC67D420036E444 /* Messages.swift in Sources */,
 				1F9140FD1DC27AA600C5F5DE /* ArrayUtil.swift in Sources */,
 				1F5ADEF71DC4015100F112C7 /* MainScreenModel.swift in Sources */,
 				1F4CEFBE1DC20A11005B4E90 /* Header.swift in Sources */,
 				1F4CEFC21DC20C24005B4E90 /* HeadersTableDelegate.swift in Sources */,
 				1F5ADEF21DC3D97200F112C7 /* WebSocketDelegate.swift in Sources */,
+				1FF69C1D1DC68EEF0036E444 /* DataUtil.swift in Sources */,
+				1FF69C191DC679160036E444 /* Message.swift in Sources */,
 				1F4CEFC41DC20DB9005B4E90 /* HeadersTableDataSource.swift in Sources */,
 				1F5ADEF41DC3DD9A00F112C7 /* TextViewUtil.swift in Sources */,
 				1F9141001DC2A94000C5F5DE /* Storage.swift in Sources */,
