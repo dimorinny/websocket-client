@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
@@ -842,14 +843,14 @@
                                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOe-Is-cK4">
                                         <rect key="frame" x="248" y="0.0" width="612" height="504"/>
                                         <clipView key="contentView" id="vyX-1p-j0C">
-                                            <rect key="frame" x="1" y="1" width="610" height="502"/>
+                                            <rect key="frame" x="1" y="1" width="595" height="502"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView identifier="log" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="5dL-F5-iPb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="610" height="502"/>
+                                                <textView identifier="log" editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="5dL-F5-iPb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="610" height="502"/>
+                                                    <size key="minSize" width="595" height="502"/>
                                                     <size key="maxSize" width="860" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
@@ -861,7 +862,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="pHW-b5-Ldz">
-                                            <rect key="frame" x="595" y="1" width="16" height="502"/>
+                                            <rect key="frame" x="596" y="1" width="15" height="502"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -897,9 +898,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="pVc-Iv-7qZ"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AeI-RW-jQh">
+                                <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AeI-RW-jQh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="onSendButton:" target="XfG-lQ-9wD" id="OFb-hO-LNQ"/>
+                                    </connections>
                                 </buttonCell>
                             </button>
                             <button identifier="connect" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YEM-zA-sy3">
@@ -934,6 +938,8 @@
                     <connections>
                         <outlet property="connectionActionButton" destination="g7w-a8-GWk" id="cSl-70-UxJ"/>
                         <outlet property="log" destination="5dL-F5-iPb" id="62W-B0-ipB"/>
+                        <outlet property="message" destination="ccB-xA-9WO" id="Mi3-jG-GiD"/>
+                        <outlet property="sendButton" destination="AeI-RW-jQh" id="JAX-uK-Ure"/>
                         <outlet property="table" destination="dwe-yj-dgT" id="Fen-0r-IqR"/>
                         <outlet property="url" destination="grH-rB-nwZ" id="VSu-c6-4sf"/>
                     </connections>

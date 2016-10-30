@@ -8,7 +8,7 @@
 
 import Foundation
 
-let dateFormat = "2014-01-12"
+let dateFormat = "2014-01-12 H:mm:ss"
 
 class Message {
     let dateFormatter = DateFormatter()

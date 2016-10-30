@@ -26,8 +26,10 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
     
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var url: NSTextField!
+    @IBOutlet weak var message: NSTextFieldCell!
     @IBOutlet weak var headersActions: NSSegmentedCell!
     @IBOutlet weak var connectionActionButton: NSButtonCell!
+    @IBOutlet weak var sendButton: NSButtonCell!
     @IBOutlet var log: NSTextView!
     
     let headersStorage: Storage<Header> = Storage(key: headersStorageKey)
@@ -60,6 +62,7 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
     func applyConnectButtonState(state: ConnectButtonActionState) {
         model.connectButtonState = state
         connectionActionButton.title = state.rawValue
+        sendButton.isEnabled = state == ConnectButtonActionState.Disconnect
     }
     
     func connect() {
@@ -67,17 +70,22 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
             
         case .Connect:
             if (!url.stringValue.isEmpty) {
+                applyConnectButtonState(state: ConnectButtonActionState.Cancel)
                 socket = WebSocket(url: URL(string: url.stringValue)!)
                 socket?.delegate = self
                 socket?.connect()
             }
             
-        case .Disconnect:
+        case .Disconnect, .Cancel:
             applyConnectButtonState(state: ConnectButtonActionState.Connect)
             socket?.disconnect()
-            
-        default:
-            ()
+        }
+    }
+    
+    func send(message: String) {
+        if (!message.isEmpty && socket != nil && (socket?.isConnected)!) {
+            socket?.write(string: message)
+            model.messages.addMessage(message: SendMessage(message: message))
         }
     }
     
@@ -123,13 +131,12 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
         connect()
     }
     
+    @IBAction func onSendButton(_ sender: NSButtonCell) {
+        send(message: message.stringValue)
+    }
+    
     @IBAction func onSendData(_ sender: NSTextField) {
-        if (!sender.stringValue.isEmpty &&
-            socket != nil &&
-            (socket?.isConnected)!) {
-            socket?.write(string: sender.stringValue)
-            model.messages.addMessage(message: SendMessage(message: sender.stringValue))
-        }
+        send(message: sender.stringValue)
     }
 }
 
