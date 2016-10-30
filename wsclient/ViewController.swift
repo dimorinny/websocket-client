@@ -71,7 +71,14 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
         case .Connect:
             if (!url.stringValue.isEmpty) {
                 applyConnectButtonState(state: ConnectButtonActionState.Cancel)
+                
+                var headers: [String : String] = [:]
+                model.headers.forEach({ (header : Header) in
+                    headers[header.name] = header.value
+                })
+                
                 socket = WebSocket(url: URL(string: url.stringValue)!)
+                socket?.headers = headers
                 socket?.delegate = self
                 socket?.connect()
             }
