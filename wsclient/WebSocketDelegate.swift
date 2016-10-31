@@ -18,7 +18,10 @@ extension ViewController : WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        print("socket disconnect")
+        print("Origin: " + socket.origin!)
+        print(socket.headers)
+//        print("socket disconnect")
+        print(error.debugDescription)
         model.messages.addMessage(message: DisconnectedMessage(url: socket.currentURL.absoluteString))
         applyConnectButtonState(state: ConnectButtonActionState.Connect)
     }

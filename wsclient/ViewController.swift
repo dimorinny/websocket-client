@@ -40,15 +40,11 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: remove it
-        model.headers.append(Header(name: "Origin", value: "aviwqeto.ru"))
-        model.headers.append(Header(name: "Origin1", value: "aviqwto.ru"))
-        model.headers.append(Header(name: "Origin2", value: "avieqwto.ru"))
-        model.headers.append(Header(name: "Origin3", value: "avieto.ru"))
-        
-        // TODO: remove it
-        headersStorage.saveData(model.headers)
-        
+        let headers = headersStorage.loadData()
+        if (headers != nil) {
+            model.headers = headersStorage.loadData()!
+        }
+    
         table.delegate = self
         table.dataSource = self
         model.messages.delegate = self
@@ -108,7 +104,9 @@ class ViewController : NSViewController, MessagesUpdateDelegate {
     }
     
     @IBAction func onHeaderValueInput(_ sender: NSTextField) {
-        model.headers[table.selectedRow].value = sender.stringValue
+        if (table.selectedRow != ViewController.rowUnselected) {
+            model.headers[table.selectedRow].value = sender.stringValue
+        }
     }
     
     @IBAction func onHeadersAction(_ sender: NSSegmentedCell) {
